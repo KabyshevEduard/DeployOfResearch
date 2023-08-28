@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Узнайте твердость сплава</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div>
+        <h1>Твердость сплава</h1>
+    </div>
+    <div>
+        <h4>Заполните форму</h4>
+    </div>
+    <div>
+        <form action="/" method="post">
+            <div class="form-example">
+                <label for="youngs">E, GPa; (Youngs modulus): </label>
+                <input type="text" name="youngs" id="E" required />
+            </div>
+            <div class="form-example">
+                <label for="ultimate">σ<sub class="substring">ult</sub>, GPa; (Ultimate strength): </label>
+                <input type="text" name="ultimate" id="ultimate" required />
+            </div>
+            <div class="form-example">
+                <label for="yield">σ<sub class="substring">yld</sub>, GPa; (Yield strength): </label>
+                <input type="text" name="yield" id="yield" required />
+            </div>
+            <div class="form-example">
+                <label for="temperature">T, K; (Melting temperature): </label>
+                <input type="text" name="temperature" id="temperature" required />
+            </div>
+            <div class="form-example">
+                <label for="density">ρ, kg/dm^3; (Density)</label>
+                <input type="text" name="density" id="density" required />
+            </div>
+            <div class="form-example">
+                <label for="capacity">c, J/kg*K; (Capacity)</label>
+                <input type="text" name="capacity" id="capacity" required />
+            </div>
+            <div id="div-subm">
+                <input type="submit" value="Вычислить" id="submission" />
+            </div>
+        </form>
+    </div>
+    <div id="result">
+        {% for msg in get_flashed_messages() %}
+        <h3 id="flsh">{{ msg }}</h3>
+        {% endfor %}
+        <h2>HB: {{ hardness }}</h2>
+    </div>
+</body>
+</html
